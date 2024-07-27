@@ -1,51 +1,35 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Image, Button, Pressable} from 'react-native';
+/* eslint-disable react-hooks/rules-of-hooks */
+/* eslint-disable prettier/prettier */
 
-const img = require("./assets/409.jpg")
+
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { Home } from './src/layouts/Home';
+import { List } from './src/layouts/Detalis';
+import Cards from './src/components/card';
+import { List100 } from './src/layouts/Detalis100';
 export default function App() {
+  const Stack = createNativeStackNavigator();
   return (
     // es un div por defecto es flex
-    <View style={styles.container}>
-      <Text>Imagen local</Text>
-      <Image source={img}  style={styles.img}/>
-      <Text>Imagen en línea</Text>
-      <Image source={{uri:"https://http.cat/404"}}  style={styles.img}/>
-      <Text>Open up App.js to start working on your app! esto es una prueba</Text>
-      <Text>siempre tenemos la etiqueta texto</Text>
-      <Text>Boton Nativo</Text>
-      <Button title='Pulsa Aquí' onPress={()=>{alert("Holu")}}/>
-      <Text>Boton Core</Text>
-      <Pressable  onPress={()=>{alert("Holu x2")}} style={styles.btnCore}>
-      <Text style={styles.text}>Pulsa Aquí</Text>
-      </Pressable>
-      <StatusBar style="auto" />
-    </View>
+ 
+    <NavigationContainer   >
+    <Stack.Navigator initialRouteName="Home" screenOptions={{
+        headerStyle: {
+          backgroundColor: '#D0342F',
+        },
+        headerTintColor: '#fff',
+        headerTitleStyle: {
+          fontWeight: 'bold',
+        },
+      }}>
+        <Stack.Screen name="Home" component={Home} options={{ title: 'HTTP Cats' }}/>
+        <Stack.Screen name="List" component={List} options={{ title: 'Tipos de HTTPS' }}/>
+        <Stack.Screen name="Code100" component={List100} options={{ title: 'Codigo 100'}}/>
+      </Stack.Navigator>
+    </NavigationContainer>
+
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-    width:"100%",
 
-  },
-  img:{
-    resizeMode:"center",
-    width:300,
-    height:200
-  },
-  btnCore: {
-    paddingHorizontal:30,
-    paddingVertical:5,
-    margin:5,
-    backgroundColor:"red",
-    borderRadius:20,
-  },
-  text:{
-    fontSize:15,
-    color:"#fff"
-  }
-});
