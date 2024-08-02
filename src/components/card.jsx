@@ -1,44 +1,34 @@
 /* eslint-disable prettier/prettier */
-import { Pressable, Text, } from 'react-native';
+import { Pressable, Text} from 'react-native';
 import { styles } from '../helpers/styles';
-import { Card } from '@rneui/themed';
-import { Icon } from '@rneui/base';
+import { Card ,} from '@rneui/themed';
+import { useState } from 'react';
+
 
 export default function Cards(props) {
-    const {title, url , path, text, nav} = props; 
+  const [see , setSee] = useState(false)
+    const {title, url , text} = props; 
   return (
     // es un div por defecto es flex
-    <Card>
+    <Card >
     <Card.Title>{title}</Card.Title>
     <Card.Divider />
     <Card.Image
-      style={{ padding: 0, height:50, width:50 }}
+      style={{ padding: 0,  width:"100%" , height:350}}
       source={{
         uri:
          `${url}`,
       }}
     />
-    <Text style={{ marginBottom: 10 }}>
+    {see?    <Text
+      style={styles.textCard}>
         {text}
-    </Text>
-    <Pressable onPress={()=> nav(path)}>
+    </Text> : null }
+    <Pressable onPress={()=> setSee(!see)} style={styles.btnCore}>
     <Text
-      icon={
-        <Icon
-          name="code"
-          color="#ffffff"
-          iconStyle={{ marginRight: 10 }}
-        />
-      }
-      
-      buttonStyle={{
-        borderRadius: 0,
-        marginLeft: 0,
-        marginRight: 0,
-        marginBottom: 0,
-      }}
-      title="+ Información"
-    />
+      style={styles.text}>
+    {`${see ? "- Información" : "+ Información"}`}
+    </Text>
     </Pressable>
   </Card>
   );

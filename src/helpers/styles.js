@@ -1,4 +1,5 @@
 /* eslint-disable prettier/prettier */
+import { StatusBar } from "react-native";
 import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
@@ -16,10 +17,11 @@ export const styles = StyleSheet.create({
     backgroundColor: "#222222",
     alignItems: "center",
     justifyContent: "center",
-    flexDirection:"column",
+    flexDirection:"row",
     width: "100%",
     fontFamily:"serif",
-    flexWrap:"wrap"
+    flexWrap:"wrap",
+    paddingTop: StatusBar.currentHeight,
   },
   header:{
     flexDirection:"row",
@@ -27,14 +29,15 @@ export const styles = StyleSheet.create({
   }, 
   title: {
     paddingVertical: 20,
-    fontSize:30, 
+    fontSize:40, 
     color:"#D0342F", 
     fontWeight:"800",
   }, 
   description:{
     textAlign:"justify",
     color:"#fff", 
-    marginHorizontal:35
+    marginHorizontal:35,
+    fontSize:20, 
   },
   img: {
     resizeMode: "center",
@@ -49,7 +52,28 @@ export const styles = StyleSheet.create({
     borderRadius: 20,
   },
   text: {
-    fontSize: 15,
+    fontSize: 20,
     color: "#fff",
+    textAlign:"center"
+  },
+  textCard: {
+    fontSize: 20,
+    color: "#D0342F",
+    textAlign:"justify"
+  },
+  containerCodes: {
+    margin:10, 
+    width:"95%",
+  }, 
+  titleCodes:{
+    fontSize:30, 
+    fontWeight:"600", 
+    textDecorationLine:"underline", 
+    color: "#fff",
+  },  
+  textCodes: {
+    fontSize: 23,
+    color: "#fff",
+    textAlign:"justify"
   },
 });
